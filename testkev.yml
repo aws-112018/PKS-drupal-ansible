@@ -22,6 +22,6 @@
       register: output
     - debug:
         msg: "drupal ok"
-      when: output.content is search('Powered')
+      when: output.content is search('Powered by')
       failed_when: output.content is not search('ZOZO')
 
