@@ -15,6 +15,13 @@
         msg: "coucou" 
     - set_fact:
         ipadd: "{{ ansible_default_ipv4.address }}"
-    - debug: 
-        msg: "http://{{ ipadd }}"
+    - name: "recuperation page adresse ip " 
+      uri:
+        url: "http://{{ ipadd }}"
+        return_content: yes
+      register: output
+    - debug:
+        msg: "drupal ok"
+      when: output.content is search('Powered by')
+     
 
