@@ -1,0 +1,27 @@
+---
+- name: "test de la solution drupal"
+  hosts: all
+  gather_facts: True
+  tasks:
+    - name: "debut du test"
+      debug:
+        msg: "test en élaboration"
+    - name: "get homepage HTTP code"
+      uri:
+        url: http://127.0.0.1
+    - debug:
+        var: ansible_virtualization_type
+    - debug:
+        msg: "coucou" 
+    - set_fact:
+        ipadd: "{{ ansible_default_ipv4.address }}"
+    - name: "recuperation page adresse ip " 
+      uri:
+        url: "http://{{ ipadd }}"
+        return_content: yes
+      register: output
+    - debug:
+        msg: "drupal ok"
+      when: output.content is search('Powered by')
+      failed_when: output.content is not search('ZOZO')
+
