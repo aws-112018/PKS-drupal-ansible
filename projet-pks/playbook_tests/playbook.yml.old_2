@@ -39,8 +39,20 @@
         name: ufw
         state: stopped
     - import_tasks: tasks/apache.yml
+      debug:
+        msg: "Import apache.yml = OK"
     - import_tasks: tasks/php.yml
+      debug:
+        msg: "Import php.yml = OK"
     - import_tasks: tasks/mysql.yml
+      debug:
+        msg: "Import mysql.yml = OK"
     - import_tasks: tasks/composer.yml
+      debug:
+        msg: "Import composer.yml = OK"
     - import_tasks: tasks/drush.yml
+      debug:
+        msg: "Import drush.yml = OK"
     - import_tasks: tasks/drupal.yml
+      debug:
+        msg: "Import drupal.yml = OK"
