@@ -1,0 +1,30 @@
+---
+- name: "Installation de MySQL"
+  apt:
+    name:
+      - mysql-server
+    state: present
+- name: "Lancement de MySQL"
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+- name: "Suppression de la base de donnée MySQL de test"
+  mysql_db:
+    db: test
+    state: absent
+- name: "Création d'une base de donnée MySQL pour Drupal"
+  mysql_db:
+    db: "{{ domain}}"
+    state: present
+- name: "Création d'un user MySQL pour Drupal"
+  mysql_user:
+    name: "{{ domain }}"
+    password: "1234"
+    priv: "{{ domain }}.*:ALL"
+    host: localhost
+    state: present
+- name: "Vérification MySQL"
+  debug:
+    msg: "MySQL is OK"
+
