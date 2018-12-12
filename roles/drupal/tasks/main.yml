@@ -1,2 +1,9 @@
 ---
 # tasks file for drupal
+- import_tasks: ./services.yml
+- import_tasks: ./php.yml
+- import_tasks: ./apache.yml
+- import_tasks: ./mysql.yml
+- import_tasks: ./composer.yml
+- import_tasks: ./drush.yml
+- import_tasks: ./drupal.yml

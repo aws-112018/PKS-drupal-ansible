@@ -1,0 +1,19 @@
+---
+- name: "Get software for apt repository management."
+  apt:
+    name:
+      - python-apt
+      - python-pycurl
+    state: present
+- name: "Install other dependencies"
+  apt:
+    name:
+      - git
+      - curl
+      - unzip
+      - sendmail
+      - libpcre3-dev
+      - python-mysqldb
+      - ufw
+    state: present
+

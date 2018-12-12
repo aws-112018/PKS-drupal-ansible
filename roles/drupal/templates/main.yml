@@ -1,0 +1,3 @@
+---
+- name: "Import du fichier de conf jinja2 pour Drupal"
+  import_tasks: drupal.test.conf.j2 
